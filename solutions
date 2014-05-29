@@ -1,0 +1,38 @@
+import webbrowser
+import string
+import urllib2
+from bs4 import BeautifulSoup, Comment
+from collections import Counter
+
+pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
+
+def level0():
+    answer = 2**38
+    print answer
+    openURL(str(answer))
+
+def level1():
+    ciphertext = 'g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj.'
+    table = string.maketrans("abcdefghijklmnopqrstuvwxyz", "cdefghijklmnopqrstuvwxyzab")
+    print ciphertext.translate(table);
+    openURL("map".translate(table))
+
+def level2():
+    # first get the mess from html source
+    source = urllib2.urlopen("http://www.pythonchallenge.com/pc/def/ocr.html").read()
+    soup = BeautifulSoup(source)
+    comments = soup.findAll(text=lambda text:isinstance(text, Comment))
+    mess = comments[1]
+    # count the instance
+    count = Counter(list(mess))
+    for k,v in count.iteritems():
+        if v == 1:
+            print k,
+    # using Counter ruins the order of the characters, though
+    openURL("equality")
+
+def openURL(url):
+    webbrowser.open_new_tab(pythonChallengeURL+url+".html")
+
+if __name__ == "__main__":
+    level2()
