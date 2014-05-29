@@ -3,6 +3,7 @@ import string
 import urllib2
 from bs4 import BeautifulSoup, Comment
 from collections import Counter
+import re
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -31,8 +32,19 @@ def level2():
     # using Counter ruins the order of the characters, though
     openURL("equality")
 
+def level3():
+    # first get the mess from html source
+    source = urllib2.urlopen("http://www.pythonchallenge.com/pc/def/equality.html").read()
+    soup = BeautifulSoup(source)
+    comments = soup.findAll(text=lambda text:isinstance(text, Comment))
+    mess = comments[0]
+    # use regular expression to get characters
+    answer = "".join(re.findall("[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]", mess))
+    openURL(answer)
+
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
 if __name__ == "__main__":
-    level2()
+    level3()
