@@ -47,7 +47,11 @@ def level4():
     headURL = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
     source = urllib2.urlopen(headURL+nothing).read()
     while True:
-        nothing = "".join(re.findall(r"nothing is (\d+)",source))
+        if 'Divide by two' in source:
+            nothing = str(int(nothing)/2)
+        else:
+            nothing = "".join(re.findall(r"nothing is (\d+)",source))
+        print nothing
         if nothing == "":
             break
         source = urllib2.urlopen(headURL+nothing).read()
