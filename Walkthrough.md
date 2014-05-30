@@ -21,3 +21,8 @@
 * The page title, the hint and the image pretty much scream out loud: "regular expressions!"
 * I used `[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]`
 * The messy text is still in the html source, of course
+
+##Level 4
+* Go to "linkedlist.php" instead of "linkedlist.html", and click the image
+* The URL changes to "nothing=12345", and the page says "the next nothing is 44827". Go to "nothing=44827", and you get another number. Combining the puzzle's title "follow the chain", it's pretty obvious what to do next
+* In fact, the html source of the "linkedlist.php" gives another clue - automate this process instead of manually following the chain. Basically a loop and a regular expression match should suffice. Yet, something "odd" happens during the process, be prepared :-)
