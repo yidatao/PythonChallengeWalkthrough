@@ -42,9 +42,19 @@ def level3():
     answer = "".join(re.findall("[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]", mess))
     openURL(answer)
 
+def level4():
+    nothing = '12345'
+    headURL = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
+    source = urllib2.urlopen(headURL+nothing).read()
+    while True:
+        nothing = "".join(re.findall(r"nothing is (\d+)",source))
+        if nothing == "":
+            break
+        source = urllib2.urlopen(headURL+nothing).read()
+    print source
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
 if __name__ == "__main__":
-    level3()
+    level4()
