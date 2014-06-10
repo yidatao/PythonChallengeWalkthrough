@@ -4,6 +4,7 @@ import urllib2
 from bs4 import BeautifulSoup, Comment
 from collections import Counter
 import re
+import pickle
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -47,14 +48,24 @@ def level4():
     headURL = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
     source = urllib2.urlopen(headURL+nothing).read()
     while True:
-        nothing = "".join(re.findall(r"nothing is (\d+)",source))
+        if 'Divide by two' in source:
+            nothing = str(int(nothing)/2)
+        else:
+            nothing = "".join(re.findall(r"nothing is (\d+)",source))
+        print nothing
         if nothing == "":
             break
         source = urllib2.urlopen(headURL+nothing).read()
     print source
 
+def level5():
+    source = urllib2.urlopen("http://www.pythonchallenge.com/pc/def/banner.p")
+    answer = pickle.load(source)
+    for elements in answer:
+        print "".join([e[0] * e[1] for e in elements])
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
 if __name__ == "__main__":
-    level4()
+    level5()
