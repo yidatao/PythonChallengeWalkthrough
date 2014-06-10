@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup, Comment
 from collections import Counter
 import re
 import pickle
+import zipfile
+import os.path
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -64,8 +66,22 @@ def level5():
     for elements in answer:
         print "".join([e[0] * e[1] for e in elements])
 
+def level6():
+    nothing = '90052'  # check the Readme first
+    file = zipfile.ZipFile("puzzleFiles/channel.zip", "r")
+    rawContent = ''
+    while True:
+        try:
+            content = file.read(nothing+'.txt')
+        except:
+            print rawContent
+            break
+        rawContent = content
+        nothing = "".join(re.findall(r"Next nothing is (\d+)",content))
+
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
 if __name__ == "__main__":
-    level5()
+    level6()
