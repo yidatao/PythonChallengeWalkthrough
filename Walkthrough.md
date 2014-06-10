@@ -26,3 +26,8 @@
 * Go to "linkedlist.php" instead of "linkedlist.html", and click the image
 * The URL changes to "nothing=12345", and the page says "the next nothing is 44827". Go to "nothing=44827", and you get another number. Combining the puzzle's title "follow the chain", it's pretty obvious what to do next
 * In fact, the html source of the "linkedlist.php" gives another clue - automate this process instead of manually following the chain. Basically a loop and a regular expression match should suffice. Yet, something "odd" happens during the process, be prepared :-)
+
+##Level 5
+* So the "peak hell" = "pickle" joke is not that easy to get
+* But when I checked the page source and looked at the "meaningless" banner.p content, it's safe to guess that we need to use python pickle to deserialize banner.p
+* The name "banner.p" itself is also a clue, which indicates the output format is like that of the Unix banner program. So the core python programming here is to efficiently print "#" and spaces, whose counts are suggested by the deserialized object.
