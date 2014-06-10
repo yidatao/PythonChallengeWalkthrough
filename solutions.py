@@ -70,6 +70,7 @@ def level6():
     nothing = '90052'  # check the Readme first
     file = zipfile.ZipFile("puzzleFiles/channel.zip", "r")
     rawContent = ''
+    comments = []
     while True:
         try:
             content = file.read(nothing+'.txt')
@@ -77,7 +78,11 @@ def level6():
             print rawContent
             break
         rawContent = content
-        nothing = "".join(re.findall(r"Next nothing is (\d+)",content))
+        comments.append(file.getinfo(nothing+'.txt').comment)
+        nothing = "".join(re.findall(r"Next nothing is (\d+)",content))        
+    
+    print ''.join(comments)
+    
 
 
 def openURL(url):
