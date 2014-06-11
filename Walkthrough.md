@@ -35,4 +35,5 @@
 ##Level 6
 * So the clue is "zip". Change the URL to "channel.zip" and download it.
 * Start with the readme, you'll find that this is another "the next nothing" game just like Level 4. This time, use python zipfile package to read the file content.
-* And another surprise, the answer is hidden in the comment of every file. So collect the comment using zipfile's function and assemble them to get the final answer.
+* And another surprise, the answer is hidden in the comment of every file. So collect the comment using zipfile's function and assemble them to get the final answer...not yet. 
+* "Hockey" turned out to be another clue: look at the letters that made up "Hockey".
