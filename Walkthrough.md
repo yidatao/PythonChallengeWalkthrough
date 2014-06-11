@@ -31,3 +31,8 @@
 * So the "peak hell" = "pickle" joke is not that easy to get
 * But when I checked the page source and looked at the "meaningless" banner.p content, it's safe to guess that we need to use python pickle to deserialize banner.p
 * The name "banner.p" itself is also a clue, which indicates the output format is like that of the Unix banner program. So the core python programming here is to efficiently print "#" and spaces, whose counts are suggested by the deserialized object.
+
+##Level 6
+* So the clue is "zip". Change the URL to "channel.zip" and download it.
+* Start with the readme, you'll find that this is another "the next nothing" game just like Level 4. This time, use python zipfile package to read the file content.
+* And another surprise, the answer is hidden in the comment of every file. So collect the comment using zipfile's function and assemble them to get the final answer.
