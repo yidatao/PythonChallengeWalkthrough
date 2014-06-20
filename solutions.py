@@ -6,7 +6,7 @@ from collections import Counter
 import re
 import pickle
 import zipfile
-import os.path
+from PIL import Image
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -83,10 +83,19 @@ def level6():
     
     print ''.join(comments)
     
+def level7():
+    img = Image.open("puzzleFiles/oxygen.png")
+    # get the pixel of the grey area
+    row = [img.getpixel((x, img.size[1]/2)) for x in range(0, img.size[0], 7)]
+    # the color is grey if R==G==B, so get the value which is the ASCII code of a character
+    hint1 = [chr(r) for r, g, b, t in row if r == g == b]
+    print "".join(hint1)
 
+    hint2 = [chr(x) for x in [105, 110, 116, 101, 103, 114, 105, 116, 121]]
+    print "".join(hint2)
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
 if __name__ == "__main__":
-    level6()
+    level7()
