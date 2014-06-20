@@ -37,3 +37,10 @@
 * Start with the readme, you'll find that this is another "the next nothing" game just like Level 4. This time, use python zipfile package to read the file content.
 * And another surprise, the answer is hidden in the comment of every file. So collect the comment using zipfile's function and assemble them to get the final answer...not yet. 
 * "Hockey" turned out to be another clue: look at the letters that made up "Hockey".
+
+##Level 7
+* Okay this one is tricky. I consulted a lot of resources to get this done [sigh]
+* The key to this puzzle is actually quite straightforward: something is encoded in the grey area of the picture
+* First we need to get the grey pixel by the coordinate (x,y). Horizontally, the grey color changes every 7 pixel (well, someone suggested it's because this is level "7"); Vertically, the grey area is roughly at the middle. So this leads to the code `row = [img.getpixel((x, img.size[1]/2)) for x in range(0, img.size[0], 7)]`
+* A PNG file has four color values: (R,G,B,Transparency). One key to find the grey color is that it has [R=G=B](http://en.wikipedia.org/wiki/Grey). So this explains the code `hint1 = [chr(r) for r, g, b, t in row if r == g == b]`
+* Now the last piece of the puzzle is to decode this ACSII value to a meaningful character using `chr()`
