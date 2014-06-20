@@ -44,3 +44,8 @@
 * First we need to get the grey pixel by the coordinate (x,y). Horizontally, the grey color changes every 7 pixel (well, someone suggested it's because this is level "7"); Vertically, the grey area is roughly at the middle. So this leads to the code `row = [img.getpixel((x, img.size[1]/2)) for x in range(0, img.size[0], 7)]`
 * A PNG file has four color values: (R,G,B,Transparency). One key to find the grey color is that it has [R=G=B](http://en.wikipedia.org/wiki/Grey). So this explains the code `hint1 = [chr(r) for r, g, b, t in row if r == g == b]`
 * Now the last piece of the puzzle is to decode this ACSII value to a meaningful character using `chr()`
+
+##Level 8
+* Clicking the bee in the picture leads to another page, which is guarded by username (un) and password (pw). View the page source and you will find that they simply appear in the comment.
+* Both strings start with `BZh91AY&SY`. Google it and you'll find the `bz2` module
+* Also some minor clues: "bee", "working hard"->"busy"->sounds familiar?
