@@ -49,3 +49,8 @@
 * Clicking the bee in the picture leads to another page, which is guarded by username (un) and password (pw). View the page source and you will find that they simply appear in the comment.
 * Both strings start with `BZh91AY&SY`. Google it and you'll find the `bz2` module
 * Also some minor clues: "bee", "working hard"->"busy"->sounds familiar?
+
+##Level 9
+* In the page source, the hint is "first+second?". Initially I assumed that the "first" array should be x coordinates while "second" should be y coordinates, but their lengths are different. So a safe guess is that the value is like [x1,y1,x2,y2...]
+* So, we can use `first[::2]` and `first[1::2]` to get the x values and y values, respectively. Then using the `zip` function to create (x,y) tuples.
+* Finally, we can draw a picture using these coordinates
