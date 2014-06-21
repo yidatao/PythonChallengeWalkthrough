@@ -143,8 +143,30 @@ def level9():
 
     img2.save("puzzleFiles/good2.jpg")
 
+def level10():
+    current = [1]
+    for i in range(0,30):
+        current = look_n_say(current)
+    print len(current)
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
+def look_n_say(num):
+    next = []
+    count = 0
+    current = num[0]
+    for i in num:
+        if i == current:
+            count = count+1
+        else:
+            next.append(count)
+            next.append(current)
+            count = 1
+            current = i
+    next.append(count)
+    next.append(current)
+    return next
+        
 if __name__ == "__main__":
-    level9()
+    level10()
