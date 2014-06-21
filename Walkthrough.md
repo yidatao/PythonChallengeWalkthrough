@@ -54,3 +54,9 @@
 * In the page source, the hint is "first+second?". Initially I assumed that the "first" array should be x coordinates while "second" should be y coordinates, but their lengths are different. So a safe guess is that the value is like [x1,y1,x2,y2...]
 * So, we can use `first[::2]` and `first[1::2]` to get the x values and y values, respectively. Then using the `zip` function to create (x,y) tuples.
 * Finally, we can draw a picture using these coordinates
+
+##Level 10
+* Clicking the bull gives an array `a = [1, 11, 21, 1211, 111221`, which is an [look-and-say](http://en.wikipedia.org/wiki/Look-and-say_sequence) sequence
+* My own solution is not really elegant. Yet I found one good solution which requires only 2 lines of code:
+  * `sets = re.findall("(1+|2+|3+)", s)`
+  * `return "".join([str(len(x))+x[0] for x in sets])`
