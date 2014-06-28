@@ -8,7 +8,7 @@ import pickle
 import zipfile
 from PIL import Image
 import bz2
-import ImageDraw
+
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -148,6 +148,18 @@ def level10():
     for i in range(0,30):
         current = look_n_say(current)
     print len(current)
+    
+def level11():
+    img = Image.open('puzzleFiles/cave.jpg')
+    odd = even = Image.new('RGB',tuple([x / 2 for x in img.size]))
+    
+    for x in range(0, img.size[0],2):
+        for y in range(0, img.size[1],2):
+            even.putpixel((x,y),img.getpixel((x,y)))
+            odd.putpixel((x+1,y+1),img.getpixel((x+1,y+1)))
+
+    even.save('even.jpg')
+    odd.save('odd.jpg')
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
@@ -169,4 +181,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level10()
+    level11()
