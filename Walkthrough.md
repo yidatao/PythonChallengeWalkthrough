@@ -60,3 +60,9 @@
 * My own solution is not really elegant. Yet I found one good solution which requires only 2 lines of code:
   * `sets = re.findall("(1+|2+|3+)", s)`
   * `return "".join([str(len(x))+x[0] for x in sets])`
+
+##Level 11
+* The only hint is "odd even". So it must have something to do with the image's coordinates.
+* For coordinates (x, y), there are four possibilities if we check whether their values are odd or even: (odd, even), (odd, odd), (even, odd), and (even, even)
+* So for pixels that have the same odd/even properties, we put them into a new image, whose size is now half of that of the original image.
+* Finally we end up with four new images. Two of the images that are created with (even, even) and (odd, odd) pixels of the original image reveal the answer 'evil', which appears on the top-right corner.
