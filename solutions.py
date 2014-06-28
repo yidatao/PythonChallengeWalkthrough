@@ -151,15 +151,21 @@ def level10():
     
 def level11():
     img = Image.open('puzzleFiles/cave.jpg')
-    odd = even = Image.new('RGB',tuple([x / 2 for x in img.size]))
-    
-    for x in range(0, img.size[0],2):
-        for y in range(0, img.size[1],2):
-            even.putpixel((x,y),img.getpixel((x,y)))
-            odd.putpixel((x+1,y+1),img.getpixel((x+1,y+1)))
+    imglist = [Image.new('RGB', (img.size[0]/2, img.size[1]/2)) for i in range(4)]
 
-    even.save('even.jpg')
-    odd.save('odd.jpg')
+    for x in range(img.size[0]):
+        for y in range(img.size[1]):
+            if x % 2 == 0 and y % 2 == 0:
+                imglist[0].putpixel((x/2, y/2), img.getpixel((x,y)))
+            elif x % 2 == 0 and y % 2 == 1:
+                imglist[1].putpixel((x/2, (y-1)/2), img.getpixel((x,y)))
+            elif x % 2 == 1 and y % 2 == 0:
+                imglist[2].putpixel(((x-1)/2, y/2),img.getpixel((x,y)))
+            else:
+                imglist[3].putpixel(((x-1)/2, (y-1)/2),img.getpixel((x,y)))
+
+    # save four images
+    [imglist[i].save('puzzleFiles/%d.jpg' % i) for i in range(4)]
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
