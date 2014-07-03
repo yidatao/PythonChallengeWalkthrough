@@ -167,6 +167,9 @@ def level11():
     # save four images
     [imglist[i].save('puzzleFiles/%d.jpg' % i) for i in range(4)]
 
+def level12():
+    print 'test'
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
@@ -187,4 +190,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level11()
+    level12()
