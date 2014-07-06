@@ -168,7 +168,17 @@ def level11():
     [imglist[i].save('puzzleFiles/%d.jpg' % i) for i in range(4)]
 
 def level12():
-    print 'test'
+    evil = open('puzzleFiles/evil2.gfx', 'rb')
+    data = evil.read()
+    evil.close()
+
+    # write to 5 images
+    for i in range(5):
+        f = open('puzzleFiles/img'+str(i)+'.jpg', "wb")
+        # like dealing the cards to 5 stacks
+        f.write(data[i::5])
+        f.close()
+
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
