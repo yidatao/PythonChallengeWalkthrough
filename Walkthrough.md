@@ -66,3 +66,8 @@
 * For coordinates (x, y), there are four possibilities if we check whether their values are odd or even: (odd, even), (odd, odd), (even, odd), and (even, even)
 * So for pixels that have the same odd/even properties, we put them into a new image, whose size is now half of that of the original image.
 * Finally we end up with four new images. Two of the images that are created with (even, even) and (odd, odd) pixels of the original image reveal the answer 'evil', which appears on the top-right corner.
+
+##Level 12
+* I considered `eval()`, `shuffle`, but the hint is actually the image's name: why it's `evil1.jpg` instead of `evil.jpg`? This might leads you to check `evil2.jpg`, which gives a hint of using `evil2.gfx`
+* Another hint is the image itself, in which a person is dealing cards into 5 piles. We should use the same strategy to distribute the bytes in `evil2.gfx` into 5 images. That is, each image gets the `i`, `i+5`, `i+10`, `i+15`, `i+20` bytes
+* It's easy to explain this solution afterwards, but it's really hard to figure it out at first.
