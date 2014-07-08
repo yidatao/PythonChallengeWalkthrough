@@ -71,3 +71,8 @@
 * I considered `eval()`, `shuffle`, but the hint is actually the image's name: why it's `evil1.jpg` instead of `evil.jpg`? This might leads you to check `evil2.jpg`, which gives a hint of using `evil2.gfx`
 * Another hint is the image itself, in which a person is dealing cards into 5 piles. We should use the same strategy to distribute the bytes in `evil2.gfx` into 5 images. That is, each image gets the `i`, `i+5`, `i+10`, `i+15`, `i+20` bytes
 * It's easy to explain this solution afterwards, but it's really hard to figure it out at first.
+
+##Level 13
+* When I checked the page source, I found this `<remote />` tag before evil. So, "remote" and "phone" made me think about "remote procedure call (RPC)".
+* Clicking "5" leads to an XML page, with the root element as "methodResponse". If only I knew about the python library `xmlrpclib`, I would get this hint more quickly.
+* The code is quite simple, except that the true "evil" is revealed in the previous level, http://www.pythonchallenge.com/pc/return/evil4.jpg (why I can only view this in IE?)
