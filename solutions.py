@@ -8,7 +8,7 @@ import pickle
 import zipfile
 from PIL import Image
 import bz2
-
+import xmlrpclib
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -179,6 +179,10 @@ def level12():
         f.write(data[i::5])
         f.close()
 
+def level13():
+    s = xmlrpclib.ServerProxy("http://www.pythonchallenge.com/pc/phonebook.php")
+    print s.system.listMethods()
+    print s.phone("Bert")
 
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
@@ -200,4 +204,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level12()
+    level13()
