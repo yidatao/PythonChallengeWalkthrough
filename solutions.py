@@ -184,6 +184,41 @@ def level13():
     print s.system.listMethods()
     print s.phone("Bert")
 
+# acknowledge the blog post http://blog.csdn.net/kosl90/article/details/7341181 for helping me solving this level :D
+def level14():
+    #the sequence in the hint
+    seq = [[i, i - 1 , i - 1, i - 2] for i in range(100, 1, -2)]
+    #collapse to a single list
+    seq = [i for l in seq for i in l]
+
+    img = Image.open("puzzleFiles/wire.png")
+    img_data = list(img.getdata())
+    # the original image has 10000 pixels
+    index = 0
+
+    res = Image.new(img.mode,(100,100))
+    res_data = res.load()
+
+    # right, down, left, up (clockwise for a square)
+    step = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+    # the current direction
+    d = 0
+
+    #cursor for writing to the result image
+    cursor = (-1,0)
+
+    for times in seq:
+        for i in range(times):
+            # move the cursor one step along the correct direction
+            cursor = tuple(map(sum, zip(cursor, step[d])))
+            # write to the result image
+            res_data[cursor] = img_data[index]
+            index += 1
+        #change the direction (4 sides for a square)
+        d = (d+1) % 4
+
+    res.save("puzzleFiles/res14.png")
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
@@ -204,4 +239,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level13()
+    level14()
