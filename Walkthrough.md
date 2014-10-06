@@ -76,3 +76,8 @@
 * When I checked the page source, I found this `<remote />` tag before evil. So, "remote" and "phone" made me think about "remote procedure call (RPC)".
 * Clicking "5" leads to an XML page, with the root element as "methodResponse". If only I knew about the python library `xmlrpclib`, I would get this hint more quickly.
 * The code is quite simple, except that the true "evil" is revealed in the previous level, http://www.pythonchallenge.com/pc/return/evil4.jpg (why I can only view this in IE?)
+
+##Level 14
+* The wire.png is actually 10000*1 = 100*100. The hint in the page source let us know that 100*100 = (100+99+99+98)..., which seems like a way to consume these 10000 pixels.
+* The sequence gives 4 numbers as a "group", which is the number of pixels we consume at each of the four sides of a square. The cinnamon roll suggest we should do it clockwise.
+* That's it. We consume the 10000 pixels as follows: 100 to the right, 99 down, 99 to the left, and 98 up, and so on...As such we'll get a new 100*100 image which renders the answer.
