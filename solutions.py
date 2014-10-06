@@ -224,6 +224,20 @@ def level15():
     #get the year 1**6, such that Jan 1st is Thursday, and it's a leap year
     print [i for i in range(1006,2006,10) if calendar.weekday(i,1,1) == 3 and calendar.isleap(i)]
 
+def level16():
+    im = Image.open("puzzleFiles/mozart.gif")
+
+    for y in range(im.size[1]):
+        line=[im.getpixel((x, y)) for x in range(im.size[0])]
+        #195 for pink
+        idx=line.index(195)
+        #align the pink to the start
+        line=line[idx:]+line[:idx]
+        #re-create the image after aligning
+        [im.putpixel((x, y),line[x]) for x in range(len(line))]
+
+    im.save("puzzleFiles/mozart-solution.gif")
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
@@ -244,4 +258,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level15()
+    level16()
