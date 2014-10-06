@@ -9,6 +9,7 @@ import zipfile
 from PIL import Image
 import bz2
 import xmlrpclib
+import calendar
 
 pythonChallengeURL = 'http://www.pythonchallenge.com/pc/def/'
 
@@ -219,6 +220,10 @@ def level14():
 
     res.save("puzzleFiles/res14.png")
 
+def level15():
+    #get the year 1**6, such that Jan 1st is Thursday, and it's a leap year
+    print [i for i in range(1006,2006,10) if calendar.weekday(i,1,1) == 3 and calendar.isleap(i)]
+
 def openURL(url):
     webbrowser.open_new_tab(pythonChallengeURL+url+".html")
 
@@ -239,4 +244,4 @@ def look_n_say(num):
     return next
         
 if __name__ == "__main__":
-    level14()
+    level15()
