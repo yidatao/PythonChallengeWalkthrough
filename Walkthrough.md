@@ -86,3 +86,7 @@
 * First it's obvious we need to guess the year, which is 1??6. Two clues are given: Jan 1st is Thursday and it's a leap year (note in the bottom-right corner, Feb has 29 days). Using python's `calendar` module quickly renders a few candidates: 1176, 1356, 1576, 1756, 1976
 * Then it's purely detective time. The page title says "whom?" and the page source says "he ain't the youngest, he is the second", so the answer should be a person
 * The page source says "buy flowers for tomorrow", so a good guess is that this person's birthday is on Jan 27. The final answer is "mozart", whose birthday is on 1756-1-27
+
+##Level 16
+* Again, this puzzle is about image processing, and it's still difficult with little hint. So I googled the answer.
+* Basically, the solution is to align the pink bar to the beginning of each line.
